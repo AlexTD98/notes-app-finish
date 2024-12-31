@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Bienvenido!
 
 Este es un repositorio para evaluar candidatos para el equipo de desarrollo
@@ -84,3 +85,10 @@ https://user-images.githubusercontent.com/4324005/120245539-5f640880-c222-11eb-8
 - Interfaz de creación
 
 https://user-images.githubusercontent.com/4324005/120245544-6559e980-c222-11eb-90b6-d2f718587c8f.mp4
+=======
+# Welcome to GitHub Desktop!
+
+This is your README. READMEs are where you can communicate what your project is and how to use it.
+
+Write your name on line 6, save it, and then head back to GitHub Desktop.
+>>>>>>> 11cf4460cf701d7659be7efbc1a2ceb292d2a20f
