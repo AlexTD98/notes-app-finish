@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <%= form_with url: notes_path, method: :get, local: true, html: { class: 'col s12' } do |f| %>
+    <div class="input-field col s12 m6">
+      <%= material_icon.search.css_class('prefix') %>
+      <%= f.text_field :title, autofocus: true, placeholder: 'Search by title', value: params.dig(:filters, :title) %>
+    </div>
+
+    <div class="input-field col s12 m6">
+      <%= f.select :sort, 
+                   [['Más reciente a más antiguo', 'newest'], 
+                    ['Más antiguo a más reciente', 'oldest'], 
+                    ['Alfabético A-Z', 'az'], 
+                    ['Alfabético Z-A', 'za']],
+                   { prompt: 'Ordenar por' },
+                   { onchange: 'this.form.submit()', value: params[:sort] } %>
+    </div>
+  <% end %>
+</div>
+
+  <!-- Agrupamos las notas por mes -->
+  <div class="row">
+  <% @notes.group_by { |note| note.created_at.strftime("%B %Y") }.each do |month, notes| %>
+    <div class="col s12">
+      <h4><%= month %></h4>
+    </div>
+
+    <% notes.each do |note| %>
+      <%= link_to note_path(note) do %>
+        <!-- Aquí usamos las clases de Materialize para la responsividad -->
+        <div class="col s12 m6 l4">
+          <div class="card">
+            <div class="card-content black-text">
+              <span class="card-title">
+                <%= note.title %>
+                <span class="right" style="font-size: 50%">
+                  <%= format_as_localtime note.created_at %>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="fixed-action-btn">
+  <%= link_to new_note_path, title: t('index.note'), class: 'btn-floating btn-large pulse' do %>
+    <%= material_icon.add %>
+  <% end %>
+</div>

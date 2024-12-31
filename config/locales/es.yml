@@ -1,0 +1,5 @@
+es:
+  index:
+    note: "Nueva nota"
+  navbar:
+    title: "Mi colección de notas"
